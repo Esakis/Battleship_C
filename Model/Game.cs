@@ -28,6 +28,8 @@ namespace Battleship.Model
 
         public void Play()
         {
+            Board Player1 = new Board();
+            Board Player2 = new Board();
             Display.Playground(this.Player1.Board);
             Display.Playground(this.Player2.Board);
 

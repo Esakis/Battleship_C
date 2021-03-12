@@ -72,15 +72,11 @@ namespace Battleship.Model
             {
                 case 0:
                     // Play 1 to 1
-                    // Game standardGame = new Game(GameMode.Standard);
-                    //  standardGame.Play();
                     Console.Clear();
-                  //  Board Player1 = new Board();
-                  //  Board Player2 = new Board();
-                  //  Display.Playground(Player1);
-                  //  Display.Playground(Player2);
-                 //   Ret ret = new Ret();
-                  //  ret.ReturnToMenu();
+                    Game standardGame = new Game(GameMode.Standard);
+                    standardGame.Play();
+                    //Input input = new Input();
+                    //input.ReturnToMenu();
                     break;
                 case 1:
                     // Play with Computer
@@ -91,8 +87,6 @@ namespace Battleship.Model
                 case 2:
                     break;
                 case 3:
-                    MenuOther menu = new MenuOther();
-                    menu.Run();
                     break;
                 case 4:
                     Environment.Exit(0);

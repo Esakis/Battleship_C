@@ -29,26 +29,6 @@ namespace Battleship
             }
         }
 
-        internal static void PrintMenu(MenuOther menuOther)
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.Clear();
-            Console.WriteLine(menuOther.Logo);
-            for (int i = 0; i < menuOther.Options.Length; i++)
-            {
-                if (i == menuOther.Position)
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("{0, -48}", menuOther.Options[i]);
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                }
-
-            }
-        }
-
         public static void Playground(Board Player)
         {
                 char top = 'A';
@@ -86,8 +66,7 @@ namespace Battleship
                     }
                     Console.WriteLine();
                 }
-                return;   
-
+                return;
         }
 
         public static void Results(Player winner)
