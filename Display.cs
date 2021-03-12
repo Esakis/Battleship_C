@@ -29,36 +29,19 @@ namespace Battleship
             }
         }
 
-<<<<<<< HEAD
-        public static void Playground(Board Player)
-=======
-        internal static void PrintMenu(MenuOther menuOther)
+        public static void Playground(Board player1Board, Board player2Board)
         {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.Clear();
-            Console.WriteLine(menuOther.Logo);
-            for (int i = 0; i < menuOther.Options.Length; i++)
-            {
-                if (i == menuOther.Position)
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("{0, -48}", menuOther.Options[i]);
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                }
-            }
+            PrintBoard(player1Board);
+            PrintBoard(player2Board);
         }
 
-        public static void Playground(Board blueboard)
->>>>>>> a61745a3d60471917a72fe8fd357eb1e32968510
+        private static void PrintBoard(Board board)
         {
             char top = 'A';
-            int left = blueboard.Size;
+            int left = board.Size;
 
             Console.Write(Environment.NewLine + Environment.NewLine);
-            for (int j = 0; j < blueboard.Size + 1; j++)
+            for (int j = 0; j < board.Size + 1; j++)
                 if (j == 0)
                     Console.Write("            ");
                 else
@@ -68,11 +51,11 @@ namespace Battleship
                 }
 
             Console.WriteLine();
-            for (int i = 0; i < blueboard.Size; i++)
+            for (int i = 0; i < board.Size; i++)
             {
                 Console.Write("       " + left + "   |");
                 left--;
-                for (int j = 0; j < blueboard.Size; j++)
+                for (int j = 0; j < board.Size; j++)
                 {
                     if (i % 2 == 0)
                     {
@@ -87,15 +70,8 @@ namespace Battleship
                         Console.ResetColor();
                     }
                 }
-<<<<<<< HEAD
-                return;
-=======
-
-                Console.WriteLine();
+                Console.Write("\n");
             }
-
-            return;
->>>>>>> a61745a3d60471917a72fe8fd357eb1e32968510
         }
 
         public static void Results(Player winner)

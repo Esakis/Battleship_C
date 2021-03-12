@@ -10,10 +10,12 @@ namespace Battleship.Model
         private Player Player2 { get; }
         private Player CurrentPlayer { get; set; }
         private Player Opponent { get; set; }
+        public int BoardSize { get; set; }
 
-        public Game(GameMode mode)
+        public Game(GameMode mode, int boardSize)
         {
             this.Mode = mode;
+            this.BoardSize = boardSize;
             this.Player1 = PlayerFactory.StandardPlayer(ConsoleColor.Green, PlayerNumber.First, 10);
 
             if (this.Mode == GameMode.Standard)
@@ -28,10 +30,13 @@ namespace Battleship.Model
 
         public void Play()
         {
-            Board Player1 = new Board();
-            Board Player2 = new Board();
-            Display.Playground(this.Player1.Board);
-            Display.Playground(this.Player2.Board);
+            Board player1Board = new Board(this.BoardSize);
+            Board player2Board = new Board(this.BoardSize);
+            // TODO Use board factory
+            // Board player1Board = BoardFactory.ManualPlacement();
+            // Board player2Board = BoardFactory.ManualPlacement();
+            Display.Playground(player1Board, player2Board);
+            // player1Board.Ocean[0, 0].Ship = new Ship();
 
             while (!this.HasWon())
             {
@@ -53,7 +58,11 @@ namespace Battleship.Model
         {
             this.Opponent = this.CurrentPlayer == Player1 ? this.Player2 : this.Player1;
         }
-
+        
+        /// <summary>
+        /// Check if current player won
+        /// </summary>
+        /// <returns>Return true if current player won</returns>
         private bool HasWon()
         {
             if (Opponent.IsAlive)

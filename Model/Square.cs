@@ -13,6 +13,6 @@ namespace Battleship.Model
 
         public Point2D Position { get; }
         public SquareStatus Status { get; }
-        public Ship Ship { get; }
+        public Ship Ship { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Battleship.Enums;
 
 namespace Battleship.Model
 {
@@ -73,7 +72,7 @@ namespace Battleship.Model
                 case 0:
                     // Play 1 to 1
                     Console.Clear();
-                    Game standardGame = new Game(GameMode.Standard);
+                    Game standardGame = new Game(GameMode.Standard, 9);
                     standardGame.Play();
                     //Input input = new Input();
                     //input.ReturnToMenu();
