@@ -29,44 +29,73 @@ namespace Battleship
             }
         }
 
+<<<<<<< HEAD
         public static void Playground(Board Player)
+=======
+        internal static void PrintMenu(MenuOther menuOther)
         {
-                char top = 'A';
-                int left = Board.Size;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.Clear();
+            Console.WriteLine(menuOther.Logo);
+            for (int i = 0; i < menuOther.Options.Length; i++)
+            {
+                if (i == menuOther.Position)
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("{0, -48}", menuOther.Options[i]);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                }
+            }
+        }
 
-                Console.Write(Environment.NewLine + Environment.NewLine);
-                for (int j = 0; j < Board.Size + 1; j++)
-                    if (j == 0)
-                        Console.Write("            ");
+        public static void Playground(Board blueboard)
+>>>>>>> a61745a3d60471917a72fe8fd357eb1e32968510
+        {
+            char top = 'A';
+            int left = blueboard.Size;
+
+            Console.Write(Environment.NewLine + Environment.NewLine);
+            for (int j = 0; j < blueboard.Size + 1; j++)
+                if (j == 0)
+                    Console.Write("            ");
+                else
+                {
+                    Console.Write("" + top + "  ");
+                    top++;
+                }
+
+            Console.WriteLine();
+            for (int i = 0; i < blueboard.Size; i++)
+            {
+                Console.Write("       " + left + "   |");
+                left--;
+                for (int j = 0; j < blueboard.Size; j++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        Console.BackgroundColor = Board.blueCage;
+                        Console.Write("  |");
+                        Console.ResetColor();
+                    }
                     else
                     {
-                        Console.Write("" + top + "  ");
-                        top++;
+                        Console.BackgroundColor = Board.darkCage;
+                        Console.Write("  |");
+                        Console.ResetColor();
                     }
+                }
+<<<<<<< HEAD
+                return;
+=======
 
                 Console.WriteLine();
-                for (int i = 0; i < Board.Size; i++)
-                {
-                    Console.Write("       " + left + "   |");
-                    left--;
-                    for (int j = 0; j < Board.Size; j++)
-                    {
-                        if (i % 2 == 0)
-                        {
-                            Console.BackgroundColor = Board.blueCage;
-                            Console.Write("  |");
-                            Console.ResetColor();
-                        }
-                        else
-                        {
-                            Console.BackgroundColor = Board.darkCage;
-                            Console.Write("  |");
-                            Console.ResetColor();
-                        }
-                    }
-                    Console.WriteLine();
-                }
-                return;
+            }
+
+            return;
+>>>>>>> a61745a3d60471917a72fe8fd357eb1e32968510
         }
 
         public static void Results(Player winner)

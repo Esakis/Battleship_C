@@ -1,21 +1,26 @@
 ﻿using System;
-using System.Drawing;
+using System.Collections.Generic;
+using Battleship.Enums;
 
 namespace Battleship.Model
 {
     public struct Ship
     {
-        public Ship(Player owner, char mark, ConsoleColor color = ConsoleColor.Green, int size = 1)
+        public Ship(ShipType shipType, List<Square> squares, Player owner, char mark, ConsoleColor color = ConsoleColor.Green, int size = 1)
         {
             Owner = owner;
-            Size = size;
+            Size = (int)shipType;
             Mark = mark;
             Color = color;
+            ShipType = shipType;
+            Squares = squares;
         }
 
-        public Player Owner;
-        public int Size;
-        public char Mark;
-        public ConsoleColor Color;
+        public Player Owner { get; }
+        public ShipType ShipType { get; }
+        public List<Square> Squares { get; }
+        public int Size { get; }
+        public char Mark { get; }
+        public ConsoleColor Color { get; }
     }
 }
