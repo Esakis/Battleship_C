@@ -45,49 +45,49 @@ namespace Battleship
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.Cyan;
                 }
-
             }
         }
 
-        public static void Playground(Board Player)
+        public static void Playground(Board blueboard)
         {
-                char top = 'A';
-                int left = Board.Size;
+            char top = 'A';
+            int left = blueboard.Size;
 
-                Console.Write(Environment.NewLine + Environment.NewLine);
-                for (int j = 0; j < Board.Size + 1; j++)
-                    if (j == 0)
-                        Console.Write("            ");
+            Console.Write(Environment.NewLine + Environment.NewLine);
+            for (int j = 0; j < blueboard.Size + 1; j++)
+                if (j == 0)
+                    Console.Write("            ");
+                else
+                {
+                    Console.Write("" + top + "  ");
+                    top++;
+                }
+
+            Console.WriteLine();
+            for (int i = 0; i < blueboard.Size; i++)
+            {
+                Console.Write("       " + left + "   |");
+                left--;
+                for (int j = 0; j < blueboard.Size; j++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        Console.BackgroundColor = Board.blueCage;
+                        Console.Write("  |");
+                        Console.ResetColor();
+                    }
                     else
                     {
-                        Console.Write("" + top + "  ");
-                        top++;
+                        Console.BackgroundColor = Board.darkCage;
+                        Console.Write("  |");
+                        Console.ResetColor();
                     }
+                }
 
                 Console.WriteLine();
-                for (int i = 0; i < Board.Size; i++)
-                {
-                    Console.Write("       " + left + "   |");
-                    left--;
-                    for (int j = 0; j < Board.Size; j++)
-                    {
-                        if (i % 2 == 0)
-                        {
-                            Console.BackgroundColor = Board.blueCage;
-                            Console.Write("  |");
-                            Console.ResetColor();
-                        }
-                        else
-                        {
-                            Console.BackgroundColor = Board.darkCage;
-                            Console.Write("  |");
-                            Console.ResetColor();
-                        }
-                    }
-                    Console.WriteLine();
-                }
-                return;   
+            }
 
+            return;
         }
 
         public static void Results(Player winner)

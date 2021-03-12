@@ -14,12 +14,12 @@ namespace Battleship.Model
         public Game(GameMode mode)
         {
             this.Mode = mode;
-            this.Player1 = PlayerFactory.StandardPlayer();
+            this.Player1 = PlayerFactory.StandardPlayer(ConsoleColor.Green, PlayerNumber.First, 10);
 
             if (this.Mode == GameMode.Standard)
-                this.Player2 = PlayerFactory.StandardPlayer();
+                this.Player2 = PlayerFactory.StandardPlayer(ConsoleColor.Blue, PlayerNumber.Second, 10);
             else if (this.Mode == GameMode.AI)
-                this.Player2 = PlayerFactory.AI();
+                this.Player2 = PlayerFactory.AI(ConsoleColor.Red, PlayerNumber.Second, 10);
 
             // On start of game change current player so player1 is the first in round.
             this.CurrentPlayer = this.Player2;

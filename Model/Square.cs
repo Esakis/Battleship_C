@@ -4,15 +4,15 @@ namespace Battleship.Model
 {
     public struct Square
     {
-        public Square(Point2D position, Ship ship, SquareStatus status = SquareStatus.Empty)
+        public Square(Point2D position, SquareStatus status = SquareStatus.Empty)
         {
             Position = position;
             Status = status;
-            Ship = ship;
+            Ship = default;
         }
 
-        public Point2D Position;
-        public SquareStatus Status;
-        public Ship Ship;
+        public Point2D Position { get; }
+        public SquareStatus Status { get; }
+        public Ship Ship { get; }
     }
 }

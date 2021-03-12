@@ -6,14 +6,16 @@ namespace Battleship.Model
 {
     public class Board
     {
-        public const int Size = 9;
+        public int Size { get; }
         public const ConsoleColor blueCage = ConsoleColor.Blue;
         public const ConsoleColor darkCage = ConsoleColor.DarkBlue;
 
 
         public List<List<int>> blueboard;
-        public Board()
+        public Board(int size)
         {
+            this.Size = size;
+            
             blueboard = new List<List<int>>();
             for (int i = 0; i < Size; i++)
             {
@@ -24,4 +26,3 @@ namespace Battleship.Model
         }
     }
 }
-
