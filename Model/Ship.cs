@@ -4,7 +4,7 @@ using Battleship.Enums;
 
 namespace Battleship.Model
 {
-    public struct Ship
+    public class Ship
     {
         public Ship(ShipType shipType, List<Square> squares, Player owner, char mark, ConsoleColor color = ConsoleColor.Green, int size = 1)
         {

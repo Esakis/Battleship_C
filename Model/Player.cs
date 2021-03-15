@@ -7,7 +7,7 @@ namespace Battleship.Model
 {
     public abstract class Player
     {
-        public static int Counter { get; set; } = 0;
+        private static int Counter { get; set; } = 0;
         private string Name { get; set; }
         private ConsoleColor Color { get; set; }
         private PlayerNumber Number { get; set; }

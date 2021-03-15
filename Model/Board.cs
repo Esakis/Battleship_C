@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Battleship.Enums;
 
 namespace Battleship.Model
 {
@@ -11,7 +10,7 @@ namespace Battleship.Model
         public const ConsoleColor blueCage = ConsoleColor.Blue;
         public const ConsoleColor darkCage = ConsoleColor.DarkBlue;
         public Square[,] Ocean { get; }
-        public Point2D SelectedField { get; set; }
+        public Point2D SelectedField { get; private set; }
         
         public Board(int size)
         {
@@ -27,11 +26,24 @@ namespace Battleship.Model
             }
 
         }
+        
+        public void CheckField()
+        {
+            // TODO add statements for SquareStatus.Hit
+            if (Ocean[SelectedField.Y, SelectedField.X].Ship != null)
+            {
+                Ocean[SelectedField.Y, SelectedField.X].Status = SquareStatus.Ship;
+            }
+            else
+            {
+                Ocean[SelectedField.Y, SelectedField.X].Status = SquareStatus.Missed;
+            }
+        }
 
         private bool IsPlacementOk()
         {
             throw new NotImplementedException();
         }
-        
+
     }
 }
