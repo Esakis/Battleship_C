@@ -16,7 +16,6 @@ namespace Battleship.Model
         {
             Position = position;
             Status = status;
-            Ship = default;
         }
 
         public Point2D Position { get; }
