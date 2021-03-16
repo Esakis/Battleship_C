@@ -11,8 +11,7 @@ namespace Battleship.Model
         public static void RandomPlacement(int size, int numbCarrier, int numbCruiser, int numbBattleship, int numbSubmarine, int numbDestroyer)
         {
             ArrayList blocketPositions = new ArrayList();
-            int numbOfShips = numbCarrier + numbCruiser + numbBattleship + numbSubmarine + numbDestroyer;
-            ArrayList listOfShips = new ArrayList(numbOfShips);
+            ArrayList listOfShips = new ArrayList();
             
             foreach (var position in listOfShips)
             {
@@ -23,8 +22,7 @@ namespace Battleship.Model
                 Random positionY = new Random();
                 int startPositionY = positionY.Next(1, size++);
                 int shipLeight = 0;
-                int[,] newShip = new int [1, 1];
-                int[,] newBlockedPlace = new int[1, 1];
+
 
                 if (numbCarrier>0)
                 {
@@ -71,58 +69,102 @@ namespace Battleship.Model
                     }
                     numbDestroyer--;
                 }
-
-                if (chosenHorizontal == 1)
+                int positionI = startPositionX;
+                int positionJ = startPositionY;
+                    
+                int[,] newShip = new int [1,0];
+                int[,] newBlockedPlace1 = new int [1,0];
+                int[,] newBlockedPlace2 = new int [1,0];
+                int n = shipLeight;
+                ArrayList blocketPositionsSmall = new ArrayList();
+                ArrayList listOfShipsSmall = new ArrayList();
+                    
+                while (n>0)
                 {
-                    int positionI = startPositionX;
-                    int positionJ = startPositionY;
-                    newShip = new int [shipLeight-1, 1];
-                    newBlockedPlace = new int [shipLeight+shipLeight-1, 1]
-                    int n = shipLeight;
-                    int m = 0;
-                    while (n>0)
+                    n--;
+                    newShip[0, 0] = positionI;
+                    newShip[1, 0] = positionJ;
+                    newBlockedPlace1 [0, 0] = positionI;
+                    newBlockedPlace1 [1, 0] = positionJ + 1;
+                    newBlockedPlace2 [0, 0] = positionI;
+                    newBlockedPlace2 [1, 0] = positionJ - 1;
+                    foreach (var blockedElement in blocketPositions) //porównuję czy nowy element jest w tablicy zablokowanych
                     {
-                        n--;
-                        newShip[m, 0] = positionI;
-                        newShip[m, 1] = positionJ;
-                        newBlockedPlace[m, 0] = positionI;
-                        newBlockedPlace[m, 1] = positionJ + 1;
-                        newBlockedPlace[m + m, 0] = positionI;
-                        newBlockedPlace[m + m, 1] = positionJ - 1;
-                        m++;
-
+                        if (newShip == blockedElement)
+                        {
+                            if (shipLeight == 1)
+                            {
+                                numbCarrier++; 
+                            }
+                            else if (shipLeight == 2)
+                            {
+                                numbCruiser++;
+                            }
+                            else if (shipLeight == 3)
+                            {
+                                numbBattleship++;
+                            }
+                            else if (shipLeight == 4)
+                            {
+                                numbSubmarine++;
+                            }
+                            else if (shipLeight == 5)
+                            {
+                                numbDestroyer++;
+                            }
+                            break;
+                        }
                     }
+                    
+                    listOfShipsSmall.Add(newShip);
+                    blocketPositionsSmall.Add(newBlockedPlace1);
+                    blocketPositionsSmall.Add(newShip);
+                    blocketPositionsSmall.Add(newBlockedPlace2);
+                    if (chosenHorizontal == 1)
+                    {
+                        positionI++;
+                    }
+                    else
+                    {
+                        positionJ++;
+                    }
+                    
                 }
-                else
+
+                foreach (var pos in listOfShipsSmall)
                 {
-                    int positionJ = startPositionX;
-                    int positionI = startPositionY;
-                    newShip = new int [1, shipLeight-1];
-                    int n = shipLeight;
-                    int m = 0;
-                    while (n>0)
-                    {
-                        n--;
-                        newShip[0, m] = positionI;
-                        newShip[1, m] = positionJ;
-                        newBlockedPlace[0, m] = positionI;
-                        newBlockedPlace[1, m] = positionJ + 1;
-                        newBlockedPlace[0, m + m] = positionI;
-                        newBlockedPlace[1, m + m] = positionJ - 1;
+                    listOfShips.Add(pos);
 
-                        m++;
-
-                    }
                 }
 
-                listOfShips.Add(newShip);
-                blocketPositions.Add((newBlockedPlace));
-
-
+                foreach (var pos in blocketPositionsSmall)
+                {
+                    blocketPositions.Add(pos);
+                }
+                
 
             }
+            //Tworzenie tablicy:
+            var board = new Board(size);
+            for (int i = 0; i < board.Ocean.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.Ocean.GetLength(1); j++)
+                {
+                    foreach (var position in listOfShips)
+                    {
+                        if (position[0]== i && position[1]== j)
+                        {
+                            Point2D = Board.darkCage;
+                        }
+                        else
+                        {
+                            Point2D = Board.blueCage;
+                        }
+                    }
+                }
+                
+            }
             
-            //throw new NotImplementedException();
         }
 
         public static Board ManualPlacement()
