@@ -30,13 +30,9 @@ namespace Battleship.Model
 
         public void Play()
         {
-            Board player1Board = new Board(this.BoardSize);
-            Board player2Board = new Board(this.BoardSize);
-            // TODO Use board factory
-            // Board player1Board = BoardFactory.ManualPlacement();
-            // Board player2Board = BoardFactory.ManualPlacement();
+            Board player1Board = BoardFactory.RandomPlacement(this.BoardSize, 5, Player1);
+            Board player2Board = BoardFactory.RandomPlacement(this.BoardSize, 5, Player2);
             Display.Playground(player1Board, player2Board);
-            // player1Board.Ocean[0, 0].Ship = new Ship();
 
             while (!this.HasWon())
             {

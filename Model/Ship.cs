@@ -6,11 +6,10 @@ namespace Battleship.Model
 {
     public class Ship
     {
-        public Ship(ShipType shipType, List<Square> squares, Player owner, char mark, ConsoleColor color = ConsoleColor.Green, int size = 1)
+        public Ship(ShipType shipType, List<Square> squares, Player owner, ConsoleColor color = ConsoleColor.Green, int size = 1)
         {
             Owner = owner;
             Size = (int)shipType;
-            Mark = mark;
             Color = color;
             ShipType = shipType;
             Squares = squares;
@@ -20,7 +19,6 @@ namespace Battleship.Model
         public ShipType ShipType { get; }
         public List<Square> Squares { get; }
         public int Size { get; }
-        public char Mark { get; }
         public ConsoleColor Color { get; }
     }
 }
