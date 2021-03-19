@@ -5,7 +5,7 @@ namespace Battleship.Model
 {
     public class Square
     {
-        public readonly Dictionary<SquareStatus, string> statusCharacters = new Dictionary<SquareStatus, string>
+        public static readonly Dictionary<SquareStatus, string> statusCharacters = new Dictionary<SquareStatus, string>
         {
             {SquareStatus.Empty, " "},
             {SquareStatus.Hit, "x"},

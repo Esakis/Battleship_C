@@ -10,7 +10,7 @@ namespace Battleship.Model
         public const ConsoleColor blueCage = ConsoleColor.Blue;
         public const ConsoleColor darkCage = ConsoleColor.DarkBlue;
         public Square[,] Ocean { get; }
-        public Point2D SelectedField { get; private set; }
+        public Point2D SelectedField { get; private set; } = new Point2D(0, 0);
         
         public Board(int size)
         {

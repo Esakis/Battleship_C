@@ -8,11 +8,11 @@ namespace Battleship.Model
     public abstract class Player
     {
         private static int Counter { get; set; } = 0;
-        private string Name { get; set; }
+        public string Name { get; }
         private ConsoleColor Color { get; set; }
         private PlayerNumber Number { get; set; }
         public Board Board { get; set; }
-        private List<Ship> Ships { get; set; } = new List<Ship>();
+        public List<Ship> Ships { get; set; } = new List<Ship>();
         private const string DefaultName = "Player";
         public bool IsAlive => Ships.Count > 0;
         protected Player(ConsoleColor color, PlayerNumber number, int boardSize)
@@ -29,6 +29,6 @@ namespace Battleship.Model
             throw new NotImplementedException();
         }
         
-        public abstract void Move(Board opponentBoard);
+        public abstract void Move(Board opponentBoard, Player player1, Player player2, Player currentPlayer);
     }
 }

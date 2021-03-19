@@ -19,9 +19,11 @@ namespace Battleship.Model
                 // if Square in ocean is empty, fill it by Ship
                 if (board.Ocean[rndY, rndX].Ship == null)
                 {
-                    board.Ocean[rndY, rndX].Ship = new Ship(ShipType.Carrier,
+                    var ship = new Ship(ShipType.Carrier,
                         new List<Square> {board.Ocean[rndY, rndX]},
                         owner);
+                    board.Ocean[rndY, rndX].Ship = ship;
+                    owner.Ships.Add(ship);
                     i++;
                 }
             }

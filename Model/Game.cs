@@ -32,12 +32,15 @@ namespace Battleship.Model
         {
             Board player1Board = BoardFactory.RandomPlacement(this.BoardSize, 5, Player1);
             Board player2Board = BoardFactory.RandomPlacement(this.BoardSize, 5, Player2);
-            Display.Playground(player1Board, player2Board);
+            this.Player1.Board = player1Board;
+            this.Player2.Board = player2Board;
 
             while (!this.HasWon())
             {
                 this.ChangePlayer();
-                this.CurrentPlayer.Move(this.Opponent.Board);
+                Display.TwoBoardHorizontally(Player1, Player2, CurrentPlayer, 5);
+
+                this.CurrentPlayer.Move(Opponent.Board, Player1, Player2, CurrentPlayer);
             }
 
             var winner = this.CurrentPlayer;
@@ -54,7 +57,7 @@ namespace Battleship.Model
         {
             this.Opponent = this.CurrentPlayer == Player1 ? this.Player2 : this.Player1;
         }
-        
+
         /// <summary>
         /// Check if current player won
         /// </summary>

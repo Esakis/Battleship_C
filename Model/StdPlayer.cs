@@ -9,7 +9,7 @@ namespace Battleship.Model
         {
         }
 
-        public override void Move(Board opponentBoard)
+        public override void Move(Board opponentBoard, Player player1, Player player2, Player currentPlayer)
         {
             bool accepted = false;
             while(!accepted)
@@ -49,8 +49,10 @@ namespace Battleship.Model
                         accepted = true;
                         break;
                 }
+                Display.TwoBoardHorizontally(player1, player2, currentPlayer);
             }
             opponentBoard.CheckField();
+            Display.TwoBoardHorizontally(player1, player2, currentPlayer);
         }
 
         private void MoveLeft(Board opponentBoard)
