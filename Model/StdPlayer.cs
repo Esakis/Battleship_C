@@ -1,5 +1,5 @@
 ﻿using System;
-using Battleship.Enums;
+using Battleship.Model.Enums;
 
 namespace Battleship.Model
 {
@@ -57,22 +57,30 @@ namespace Battleship.Model
 
         private void MoveLeft(Board opponentBoard)
         {
-            opponentBoard.SelectedField.X--;
+            Point2D selectedField = opponentBoard.SelectedField;
+            selectedField.X--;
+            opponentBoard.SelectedField = selectedField;
         }
 
         private void MoveDown(Board opponentBoard)
         {
-            opponentBoard.SelectedField.Y++;
+            Point2D selectedField = opponentBoard.SelectedField;
+            selectedField.Y++;
+            opponentBoard.SelectedField = selectedField;
         }
 
         private void MoveRight(Board opponentBoard)
         {
-            opponentBoard.SelectedField.X++;
+            Point2D selectedField = opponentBoard.SelectedField;
+            selectedField.X++;
+            opponentBoard.SelectedField = selectedField;
         }
 
         private void MoveUp(Board opponentBoard)
         {
-            opponentBoard.SelectedField.Y--;
+            Point2D selectedField = opponentBoard.SelectedField;
+            selectedField.Y--;
+            opponentBoard.SelectedField = selectedField;
         }
     }
 }

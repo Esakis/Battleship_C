@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Battleship.Enums;
+using Battleship.Model.Enums;
 
 namespace Battleship.Model
 {
@@ -14,7 +14,7 @@ namespace Battleship.Model
         public Board Board { get; set; }
         public List<Ship> Ships { get; set; } = new List<Ship>();
         private const string DefaultName = "Player";
-        public bool IsAlive => Ships.Count > 0;
+        public virtual bool IsAlive => Ships.Count > 0;
         protected Player(ConsoleColor color, PlayerNumber number, int boardSize)
         {
             Counter++;

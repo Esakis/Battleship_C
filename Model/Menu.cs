@@ -1,5 +1,5 @@
 ﻿using System;
-using Battleship.Enums;
+using Battleship.Model.Enums;
 
 namespace Battleship.Model
 {
@@ -74,14 +74,11 @@ namespace Battleship.Model
                     Console.Clear();
                     Game standardGame = new Game(GameMode.Standard, 9);
                     standardGame.Play();
-                    //Input input = new Input();
-                    //input.ReturnToMenu();
                     break;
                 case 1:
                     // Play with Computer
                     //   Game gameWithComputer = new Game(GameMode.AI);
                     //   gameWithComputer.Play();
-                    
                     break;
                 case 2:
                     break;

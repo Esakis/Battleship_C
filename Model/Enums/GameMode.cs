@@ -1,4 +1,4 @@
-﻿namespace Battleship.Enums
+﻿namespace Battleship.Model.Enums
 {
     public enum GameMode
     {

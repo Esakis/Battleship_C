@@ -1,5 +1,5 @@
 ﻿using System;
-using Battleship.Enums;
+using Battleship.Model.Enums;
 
 namespace Battleship.Model
 {
@@ -10,7 +10,7 @@ namespace Battleship.Model
         public const ConsoleColor blueCage = ConsoleColor.Blue;
         public const ConsoleColor darkCage = ConsoleColor.DarkBlue;
         public Square[,] Ocean { get; }
-        public Point2D SelectedField { get; private set; } = new Point2D(0, 0);
+        public Point2D SelectedField { get; set; }
         
         public Board(int size)
         {

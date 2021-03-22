@@ -1,5 +1,5 @@
 ﻿using System;
-using Battleship.Enums;
+using Battleship.Model.Enums;
 
 namespace Battleship.Model
 {
@@ -30,15 +30,15 @@ namespace Battleship.Model
 
         public void Play()
         {
-            Board player1Board = BoardFactory.RandomPlacement(this.BoardSize, 5, Player1);
-            Board player2Board = BoardFactory.RandomPlacement(this.BoardSize, 5, Player2);
+            Board player1Board = BoardFactory.RandomPlacement(this.BoardSize, 20, Player1);
+            Board player2Board = BoardFactory.RandomPlacement(this.BoardSize, 20, Player2);
             this.Player1.Board = player1Board;
             this.Player2.Board = player2Board;
 
             while (!this.HasWon())
             {
                 this.ChangePlayer();
-                Display.TwoBoardHorizontally(Player1, Player2, CurrentPlayer, 5);
+                Display.TwoBoardHorizontally(Player1, Player2, CurrentPlayer);
 
                 this.CurrentPlayer.Move(Opponent.Board, Player1, Player2, CurrentPlayer);
             }
